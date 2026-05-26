@@ -5,9 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.hms.hms_backend.model.Appointment;
 
 public interface AppointmentRepository
-extends JpaRepository<
-Appointment,
-Integer
->{
+extends JpaRepository<Appointment,Integer>{
 
 }

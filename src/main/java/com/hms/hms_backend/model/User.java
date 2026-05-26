@@ -7,18 +7,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="doctors")
+@Table(name="users")
 
-public class Doctor {
+public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+
     private int id;
 
-    private String name;
-    private String specialization;
+    private String username;
+    private String password;
 
-    public Doctor(){}
+    public User(){}
 
     public int getId(){
         return id;
@@ -28,20 +29,20 @@ public class Doctor {
         this.id=id;
     }
 
-    public String getName(){
-        return name;
+    public String getUsername(){
+        return username;
     }
 
-    public void setName(String name){
-        this.name=name;
+    public void setUsername(String username){
+        this.username=username;
     }
 
-    public String getSpecialization(){
-        return specialization;
+    public String getPassword(){
+        return password;
     }
 
-    public void setSpecialization(String specialization){
-        this.specialization=specialization;
+    public void setPassword(String password){
+        this.password=password;
     }
 
 }

@@ -3,42 +3,47 @@ package com.hms.hms_backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.hms.hms_backend.model.Appointment;
 import com.hms.hms_backend.service.AppointmentService;
 
+@CrossOrigin(origins="http://localhost:5173")
 @RestController
 @RequestMapping("/appointments")
 
 public class AppointmentController {
 
     @Autowired
-    AppointmentService service;
+    AppointmentService appointmentService;
 
 
     @GetMapping
-    public List<Appointment>
-    getAppointments(){
+    public List<Appointment> getAllAppointments(){
 
-        return service
-                .getAllAppointments();
+        return appointmentService.getAllAppointments();
 
     }
 
 
     @PostMapping
-    public Appointment saveAppointment(
+    public Appointment addAppointment(
 
-            @RequestBody
-            Appointment appointment
+            @RequestBody Appointment appointment
 
     ){
 
-        return service
-                .saveAppointment(
-                        appointment
-                );
+        return appointmentService.saveAppointment(
+                appointment
+        );
 
     }
 
@@ -46,19 +51,18 @@ public class AppointmentController {
     @PutMapping("/{id}")
     public Appointment updateAppointment(
 
-            @RequestBody
-            Appointment appointment,
+            @RequestBody Appointment appointment,
 
-            @PathVariable
-            int id
+            @PathVariable int id
 
     ){
 
-        return service
-                .updateAppointment(
-                        appointment,
-                        id
-                );
+        return appointmentService.updateAppointment(
+
+                appointment,
+                id
+
+        );
 
     }
 
@@ -66,14 +70,11 @@ public class AppointmentController {
     @DeleteMapping("/{id}")
     public void deleteAppointment(
 
-            @PathVariable
-            int id
+            @PathVariable int id
 
     ){
 
-        service.deleteAppointment(
-                id
-        );
+        appointmentService.deleteAppointment(id);
 
     }
 

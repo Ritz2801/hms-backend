@@ -11,58 +11,56 @@ import com.hms.hms_backend.repository.BillingRepository;
 @Service
 public class BillingService {
 
-    @Autowired
-    BillingRepository repository;
+@Autowired
+BillingRepository repository;
 
 
+public List<Billing> getAllBills(){
 
-    public List<Billing> getAllBills(){
+return repository.findAll();
 
-        return repository.findAll();
-
-    }
-
+}
 
 
-    public Billing saveBill(
-            Billing bill
-    ){
+public Billing saveBill(
 
-        bill.setId(0);
+Billing bill
 
-        return repository.save(
-                bill
-        );
+){
 
-    }
+return repository.save(
+bill
+);
 
-
-
-    public Billing updateBill(
-
-            Billing bill,
-            int id
-
-    ){
-
-        bill.setId(id);
-
-        return repository.save(
-                bill
-        );
-
-    }
+}
 
 
+public Billing updateBill(
 
-    public void deleteBill(
-            int id
-    ){
+Billing bill,
+int id
 
-        repository.deleteById(
-                id
-        );
+){
 
-    }
+bill.setId(id);
+
+return repository.save(
+bill
+);
+
+}
+
+
+public void deleteBill(
+
+int id
+
+){
+
+repository.deleteById(
+id
+);
+
+}
 
 }

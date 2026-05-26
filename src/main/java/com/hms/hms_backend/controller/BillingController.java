@@ -3,6 +3,7 @@ package com.hms.hms_backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,70 +16,70 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hms.hms_backend.model.Billing;
 import com.hms.hms_backend.service.BillingService;
 
+@CrossOrigin(origins="http://localhost:5173")
 @RestController
 @RequestMapping("/billing")
 
 public class BillingController {
 
-    @Autowired
-    BillingService service;
+@Autowired
+BillingService billingService;
 
 
-    @GetMapping
-    public List<Billing>
-    getBills(){
+@GetMapping
+public List<Billing> getAllBills(){
 
-        return service.getAllBills();
+return billingService.getAllBills();
 
-    }
-
-
-    @PostMapping
-    public Billing saveBill(
-
-            @RequestBody
-            Billing bill
-
-    ){
-
-        return service.saveBill(
-                bill
-        );
-
-    }
+}
 
 
-    @PutMapping("/{id}")
-    public Billing updateBill(
+@PostMapping
+public Billing addBill(
 
-            @RequestBody
-            Billing bill,
+@RequestBody Billing bill
 
-            @PathVariable
-            int id
+){
 
-    ){
+return billingService.saveBill(
+bill
+);
 
-        return service.updateBill(
-                bill,
-                id
-        );
-
-    }
+}
 
 
-    @DeleteMapping("/{id}")
-    public void deleteBill(
+@PutMapping("/{id}")
 
-            @PathVariable
-            int id
+public Billing updateBill(
 
-    ){
+@RequestBody Billing bill,
 
-        service.deleteBill(
-                id
-        );
+@PathVariable int id
 
-    }
+){
+
+return billingService.updateBill(
+
+bill,
+id
+
+);
+
+}
+
+
+@DeleteMapping("/{id}")
+
+public void deleteBill(
+
+@PathVariable int id
+
+){
+
+billingService.deleteBill(
+id
+);
+
+}
 
 }

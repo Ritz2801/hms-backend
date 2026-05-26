@@ -15,8 +15,7 @@ public class AppointmentService {
     AppointmentRepository repository;
 
 
-    public List<Appointment>
-    getAllAppointments(){
+    public List<Appointment> getAllAppointments(){
 
         return repository.findAll();
 
@@ -24,9 +23,7 @@ public class AppointmentService {
 
 
     public Appointment saveAppointment(
-
             Appointment appointment
-
     ){
 
         return repository.save(
@@ -37,15 +34,11 @@ public class AppointmentService {
 
 
     public Appointment updateAppointment(
-
             Appointment appointment,
             int id
-
     ){
 
-        appointment.setId(
-                id
-        );
+        appointment.setId(id);
 
         return repository.save(
                 appointment
@@ -58,9 +51,7 @@ public class AppointmentService {
             int id
     ){
 
-        repository.deleteById(
-                id
-        );
+        repository.deleteById(id);
 
     }
 

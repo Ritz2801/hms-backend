@@ -15,8 +15,7 @@ public class DoctorService {
     DoctorRepository repository;
 
 
-    public List<Doctor>
-    getAllDoctors(){
+    public List<Doctor> getAllDoctors(){
 
         return repository.findAll();
 
@@ -35,10 +34,8 @@ public class DoctorService {
 
 
     public Doctor updateDoctor(
-
             Doctor doctor,
             int id
-
     ){
 
         doctor.setId(id);
